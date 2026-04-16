@@ -1,0 +1,136 @@
+---
+const pillars = [
+  {
+    icon: "🎬",
+    title: "Production Pro",
+    body: "Tournage et montage de qualité cinématographique",
+  },
+  {
+    icon: "📈",
+    title: "Croissance Continue",
+    body: "Stratégies qui génèrent des résultats durables",
+  },
+  {
+    icon: "🤝",
+    title: "Partenariat Réel",
+    body: "Une collaboration sincère et transparente",
+  },
+  {
+    icon: "🎯",
+    title: "Ciblage Précis",
+    body: "Campagnes optimisées pour votre audience idéale",
+  },
+];
+---
+
+<section id="about">
+  <div class="about-grid">
+    <div class="about-text">
+      <div class="section-tag">Qui Sommes-Nous</div>
+      <h2 class="section-title">L'Agence qui <em>Propulse</em> Vos Ambitions</h2>
+      <p>
+        Nous sommes une agence spécialisée dans les solutions marketing et de production intégrées. Nous croyons qu'un contenu fort est la base du succès à l'ère numérique.
+      </p>
+      <p>
+        Que vous soyez une entreprise cherchant à renforcer sa présence (Marketing B2B), ou un créateur de contenu aspirant à construire sa marque personnelle (Personal Branding), notre équipe est prête à vous propulser au niveau supérieur.
+      </p>
+    </div>
+    <div class="about-pillars">
+      {
+        pillars.map((p) => (
+          <div class="pillar fade-up">
+            <div class="pillar-icon" aria-hidden="true">
+              {p.icon}
+            </div>
+            <h4>{p.title}</h4>
+            <p>{p.body}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .about-text p {
+    font-size: 1.05rem;
+    line-height: 1.85;
+    color: rgba(245, 240, 232, 0.6);
+    font-weight: 300;
+    margin-bottom: 20px;
+  }
+
+  .about-pillars {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+  }
+
+  .pillar {
+    background: var(--dark2);
+    padding: 32px 28px;
+    border: 1px solid var(--border);
+    transition: border-color 0.3s, background 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pillar::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--gold);
+    transition: width 0.4s;
+  }
+
+  .pillar:hover {
+    background: rgba(201, 147, 58, 0.04);
+    border-color: rgba(201, 147, 58, 0.4);
+  }
+
+  .pillar:hover::before {
+    width: 100%;
+  }
+
+  .pillar-icon {
+    font-size: 1.6rem;
+    margin-bottom: 14px;
+  }
+
+  .pillar h4 {
+    font-family: var(--font-syne);
+    font-size: 0.88rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+
+  .pillar p {
+    font-size: 0.8rem;
+    color: rgba(245, 240, 232, 0.45);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 900px) {
+    .about-grid {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    .about-pillars {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>

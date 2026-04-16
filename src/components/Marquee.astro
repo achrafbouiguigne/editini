@@ -1,0 +1,73 @@
+---
+const items = [
+  "Production",
+  "Marketing Digital",
+  "Montage Vidéo",
+  "Personal Branding",
+  "B2B Solutions",
+  "Publicité Ciblée",
+  "Motion Graphic",
+  "Couverture Événementielle",
+];
+
+// Duplicate the list so the -50% translate creates a seamless loop.
+const track = [...items, ...items];
+---
+
+<div class="marquee-wrap" aria-hidden="true">
+  <div class="marquee-track">
+    {
+      track.map((item) => (
+        <span class="marquee-item">
+          {item} <span>★</span>
+        </span>
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  .marquee-wrap {
+    overflow: hidden;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 18px 0;
+    background: var(--dark2);
+  }
+
+  .marquee-track {
+    display: flex;
+    gap: 0;
+    animation: marquee 20s linear infinite;
+    white-space: nowrap;
+    will-change: transform;
+  }
+
+  .marquee-item {
+    font-family: var(--font-bebas);
+    font-size: 1rem;
+    letter-spacing: 0.2em;
+    color: rgba(245, 240, 232, 0.25);
+    padding: 0 40px;
+    flex-shrink: 0;
+  }
+
+  .marquee-item span {
+    color: var(--gold);
+  }
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track {
+      animation: none;
+    }
+  }
+</style>

@@ -1,0 +1,171 @@
+---
+---
+
+<section class="hero" id="home">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-line" aria-hidden="true"></div>
+  <div class="hero-tag">Digital Marketing Agency — Rabat, Maroc</div>
+  <h1>
+    CROISSANCE
+    <span class="line2">& ÉCLAT</span>
+    NUMÉRIQUE
+  </h1>
+  <p class="hero-desc">
+    Votre partenaire stratégique en marketing et production média. Nous transformons vos idées en contenu créatif et résultats concrets.
+  </p>
+  <div class="hero-btns">
+    <a href="#packs" class="btn-primary">Voir nos Packs</a>
+    <a href="#services" class="btn-secondary">
+      Nos Services
+      <span class="arrow">→</span>
+    </a>
+  </div>
+  <div class="hero-metrics" aria-label="Chiffres clés">
+    <div class="metric-item">
+      <div class="metric-num">100+</div>
+      <div class="metric-label">Clients Satisfaits</div>
+    </div>
+    <div class="metric-item">
+      <div class="metric-num">4</div>
+      <div class="metric-label">Services Intégrés</div>
+    </div>
+    <div class="metric-item">
+      <div class="metric-num">∞</div>
+      <div class="metric-label">Créativité</div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 120px 60px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 70% 60% at 80% 50%, rgba(201, 147, 58, 0.08) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 20% 80%, rgba(201, 147, 58, 0.04) 0%, transparent 60%);
+  }
+
+  .hero-line {
+    position: absolute;
+    left: 60px;
+    top: 50%;
+    width: 1px;
+    height: 200px;
+    background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+    transform: translateY(-50%);
+    animation: pulse 3s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%,
+    100% {
+      opacity: 0.3;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+
+  .hero-tag {
+    font-size: 0.72rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 28px;
+    padding-left: 90px;
+    position: relative;
+  }
+
+  .hero-tag::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 70px;
+    height: 1px;
+    background: var(--gold);
+    transform: translateY(-50%);
+  }
+
+  .hero h1 {
+    font-family: var(--font-bebas);
+    font-size: clamp(5rem, 11vw, 9.5rem);
+    line-height: 0.9;
+    letter-spacing: 0.02em;
+    margin-bottom: 36px;
+    position: relative;
+  }
+
+  .hero h1 .line2 {
+    color: var(--gold);
+    display: block;
+  }
+
+  .hero-desc {
+    max-width: 500px;
+    font-size: 1rem;
+    line-height: 1.75;
+    color: rgba(245, 240, 232, 0.55);
+    margin-bottom: 52px;
+    font-weight: 300;
+  }
+
+  .hero-btns {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .hero-metrics {
+    position: absolute;
+    right: 60px;
+    bottom: 80px;
+    display: flex;
+    gap: 60px;
+  }
+
+  .metric-item {
+    text-align: right;
+  }
+
+  .metric-num {
+    font-family: var(--font-bebas);
+    font-size: 3rem;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .metric-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(245, 240, 232, 0.4);
+    margin-top: 4px;
+  }
+
+  @media (max-width: 900px) {
+    .hero {
+      padding: 80px 24px;
+    }
+
+    .hero h1 {
+      font-size: 4.5rem;
+    }
+
+    .hero-metrics {
+      display: none;
+    }
+  }
+</style>
