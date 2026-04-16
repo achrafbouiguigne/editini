@@ -8,8 +8,7 @@ export default defineConfig({
   build: {
     inlineStylesheets: "auto",
   },
-  experimental: {
-    fonts: [
+  fonts: [
     {
       name: "Bebas Neue",
       cssVariable: "--font-bebas",
@@ -37,6 +36,5 @@ export default defineConfig({
       subsets: ["latin"],
       fallbacks: ["system-ui", "sans-serif"],
     },
-    ],
-  },
+  ],
 });
