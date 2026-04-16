@@ -1,0 +1,115 @@
+---
+const editingServices = [
+  "Montage Reels Standard",
+  "Montage Reels Motion Graphic",
+  "Montage YouTube Standard",
+  "Montage YouTube Motion Graphic",
+  "Montage Vidéo Publicitaire",
+];
+
+const extraServices = [
+  "Couverture Photo/Vidéo Événements",
+  "Réalisation Documentaire",
+  "Montage Vidéo Clip",
+  "Création Campagnes Publicitaires",
+];
+---
+
+<section id="montage">
+  <div class="section-tag">Détail des Prestations</div>
+  <h2 class="section-title">Services de <em>Montage</em></h2>
+  <div class="montage-layout">
+    <div class="montage-col">
+      <h3>Services de Montage</h3>
+      <ul class="montage-list">
+        {editingServices.map((s) => <li>{s}</li>)}
+      </ul>
+    </div>
+    <div class="montage-col">
+      <h3>Services Supplémentaires</h3>
+      <ul class="montage-list">
+        {extraServices.map((s) => <li>{s}</li>)}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  section {
+    background: var(--dark2);
+  }
+
+  .montage-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+  }
+
+  .montage-col {
+    background: var(--dark);
+    border: 1px solid var(--border);
+    padding: 48px 44px;
+  }
+
+  .montage-col h3 {
+    font-family: var(--font-syne);
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .montage-col h3::before {
+    content: "";
+    width: 20px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .montage-list {
+    list-style: none;
+  }
+
+  .montage-list li {
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    font-size: 0.95rem;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    color: rgba(245, 240, 232, 0.75);
+    transition: color 0.3s, padding-left 0.3s;
+    cursor: default;
+  }
+
+  .montage-list li:last-child {
+    border-bottom: none;
+  }
+
+  .montage-list li:hover {
+    color: var(--white);
+    padding-left: 8px;
+  }
+
+  .montage-list li::before {
+    content: "→";
+    color: var(--gold);
+    font-size: 0.8rem;
+    transition: transform 0.3s;
+  }
+
+  .montage-list li:hover::before {
+    transform: translateX(4px);
+  }
+
+  @media (max-width: 900px) {
+    .montage-layout {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,349 @@
+---
+type Pack = {
+  tier: string;
+  name: string;
+  features: string[];
+  cta: string;
+  featured?: boolean;
+};
+
+const contentPacks: Pack[] = [
+  {
+    tier: "Pack",
+    name: "GOLD",
+    features: [
+      "8 Montages Vidéo Premium",
+      "8 Designs Miniatures Premium",
+      "Stratégie Mensuelle Personnalisée",
+      "Profil Pro Gratuit + Highlight",
+      "Support & Suivi + Corrections Illimitées",
+    ],
+    cta: "Choisir ce Pack",
+  },
+  {
+    tier: "Pack",
+    name: "VIP",
+    features: [
+      "12 Montages Vidéo Premium",
+      "12 Designs Miniatures Premium",
+      "1 Vidéo + 1 Miniature Offertes",
+      "Tous les avantages du Pack Gold",
+      "Charte Graphique Personnalisée",
+    ],
+    cta: "Choisir ce Pack",
+    featured: true,
+  },
+  {
+    tier: "Pack",
+    name: "SUR MESURE",
+    features: [
+      "16+ Montages Vidéo Premium",
+      "16+ Designs Miniatures Premium",
+      "Solutions entièrement personnalisées",
+      "Priorité absolue au support",
+    ],
+    cta: "Nous Contacter",
+  },
+];
+
+const photoPacks: Pack[] = [
+  {
+    tier: "Pack",
+    name: "GOLD",
+    features: [
+      "2 Vidéos Publicitaires",
+      "25 Photos Professionnelles",
+      "Campagne Publicitaire de 3 jours",
+    ],
+    cta: "Choisir ce Pack",
+  },
+  {
+    tier: "Pack",
+    name: "VIP",
+    features: [
+      "4 Vidéos Publicitaires",
+      "50 Photos Professionnelles",
+      "Campagne Publicitaire de 7 jours",
+    ],
+    cta: "Choisir ce Pack",
+    featured: true,
+  },
+  {
+    tier: "Pack",
+    name: "SUR MESURE",
+    features: [
+      "Vidéos Publicitaires sur demande",
+      "Photos Professionnelles sur demande",
+      "Campagne Publicitaire de 30 jours",
+    ],
+    cta: "Nous Contacter",
+  },
+];
+---
+
+<section id="packs">
+  <div class="section-tag">Tarification</div>
+  <h2 class="section-title">Des Packs Adaptés à <em>Vos Besoins</em></h2>
+  <div class="packs-intro">
+    <p>
+      Choisissez le plan idéal pour la croissance de votre entreprise, que vous ayez besoin d'un coup de pouce marketing rapide ou d'un partenaire de contenu continu.
+    </p>
+  </div>
+
+  <div class="pack-tabs" role="tablist" aria-label="Catégories de packs">
+    <button
+      class="pack-tab active"
+      role="tab"
+      id="tab-content"
+      aria-selected="true"
+      aria-controls="panel-content"
+      data-panel="content"
+    >
+      Création de Contenu
+    </button>
+    <button
+      class="pack-tab"
+      role="tab"
+      id="tab-photo"
+      aria-selected="false"
+      aria-controls="panel-photo"
+      data-panel="photo"
+    >
+      Photo & Publicité
+    </button>
+  </div>
+
+  <div class="pack-panel active" id="panel-content" role="tabpanel" aria-labelledby="tab-content">
+    {
+      contentPacks.map((p) => (
+        <div class:list={["pack-card", "fade-up", p.featured && "featured"]}>
+          {p.featured && <div class="pack-badge">Most Wanted</div>}
+          <div class="pack-tier">{p.tier}</div>
+          <div class="pack-name">{p.name}</div>
+          <div class="pack-divider" />
+          <ul class="pack-features">
+            {p.features.map((f) => (
+              <li>{f}</li>
+            ))}
+          </ul>
+          <a href="#cta" class="pack-cta">
+            {p.cta}
+          </a>
+        </div>
+      ))
+    }
+  </div>
+
+  <div class="pack-panel" id="panel-photo" role="tabpanel" aria-labelledby="tab-photo" hidden>
+    {
+      photoPacks.map((p) => (
+        <div class:list={["pack-card", "fade-up", p.featured && "featured"]}>
+          {p.featured && <div class="pack-badge">Most Wanted</div>}
+          <div class="pack-tier">{p.tier}</div>
+          <div class="pack-name">{p.name}</div>
+          <div class="pack-divider" />
+          <ul class="pack-features">
+            {p.features.map((f) => (
+              <li>{f}</li>
+            ))}
+          </ul>
+          <a href="#cta" class="pack-cta">
+            {p.cta}
+          </a>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .packs-intro {
+    max-width: 600px;
+    margin-bottom: 60px;
+  }
+
+  .packs-intro p {
+    font-size: 1rem;
+    color: rgba(245, 240, 232, 0.5);
+    line-height: 1.8;
+    font-weight: 300;
+  }
+
+  .pack-tabs {
+    display: flex;
+    gap: 2px;
+    margin-bottom: 40px;
+  }
+
+  .pack-tab {
+    padding: 12px 28px;
+    background: var(--dark2);
+    border: 1px solid var(--border);
+    color: rgba(245, 240, 232, 0.5);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: var(--font-syne);
+  }
+
+  .pack-tab.active,
+  .pack-tab:hover {
+    background: var(--gold);
+    color: var(--black);
+    border-color: var(--gold);
+  }
+
+  .pack-panel {
+    display: none;
+  }
+
+  .pack-panel.active {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+
+  .pack-card {
+    background: var(--dark2);
+    border: 1px solid var(--border);
+    padding: 48px 40px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.4s;
+  }
+
+  .pack-card:hover {
+    transform: translateY(-4px);
+  }
+
+  .pack-card.featured {
+    border-color: var(--gold);
+    background: linear-gradient(145deg, rgba(201, 147, 58, 0.08) 0%, var(--dark2) 60%);
+  }
+
+  .pack-badge {
+    position: absolute;
+    top: 24px;
+    right: -32px;
+    background: var(--gold);
+    color: var(--black);
+    font-size: 0.6rem;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 6px 50px;
+    transform: rotate(45deg);
+    font-family: var(--font-syne);
+  }
+
+  .pack-tier {
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+    font-family: var(--font-syne);
+    font-weight: 700;
+  }
+
+  .pack-name {
+    font-family: var(--font-bebas);
+    font-size: 2.8rem;
+    letter-spacing: 0.05em;
+    margin-bottom: 30px;
+    line-height: 1;
+  }
+
+  .pack-divider {
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+    margin-bottom: 30px;
+  }
+
+  .pack-features {
+    list-style: none;
+    margin-bottom: 40px;
+  }
+
+  .pack-features li {
+    font-size: 0.85rem;
+    color: rgba(245, 240, 232, 0.65);
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    line-height: 1.4;
+  }
+
+  .pack-features li:last-child {
+    border-bottom: none;
+  }
+
+  .pack-features li::before {
+    content: "✓";
+    color: var(--gold);
+    font-weight: 700;
+    font-size: 0.75rem;
+    flex-shrink: 0;
+  }
+
+  .pack-cta {
+    display: block;
+    text-align: center;
+    padding: 14px 30px;
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    text-decoration: none;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    transition: all 0.3s;
+    font-family: var(--font-syne);
+  }
+
+  .pack-cta:hover,
+  .pack-card.featured .pack-cta {
+    background: var(--gold);
+    color: var(--black);
+  }
+
+  @media (max-width: 900px) {
+    .pack-panel.active {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  const tabs = document.querySelectorAll<HTMLButtonElement>(".pack-tab");
+  const panels = document.querySelectorAll<HTMLElement>(".pack-panel");
+
+  const activate = (panelId: string) => {
+    tabs.forEach((t) => {
+      const isActive = t.dataset.panel === panelId;
+      t.classList.toggle("active", isActive);
+      t.setAttribute("aria-selected", String(isActive));
+    });
+
+    panels.forEach((p) => {
+      const isActive = p.id === `panel-${panelId}`;
+      p.classList.toggle("active", isActive);
+      if (isActive) p.removeAttribute("hidden");
+      else p.setAttribute("hidden", "");
+    });
+  };
+
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      const panel = tab.dataset.panel;
+      if (panel) activate(panel);
+    });
+  });
+</script>

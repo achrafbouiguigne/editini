@@ -1,0 +1,169 @@
+---
+const services = [
+  {
+    num: "01",
+    icon: "🎬",
+    title: "Production & Montage",
+    body: "Services professionnels de tournage et montage vidéo pour Reels et programmes YouTube en qualité cinématographique.",
+    href: "#packs",
+    cta: "Voir Packs →",
+  },
+  {
+    num: "02",
+    icon: "📸",
+    title: "Photo & Événementiel",
+    body: "Couverture professionnelle de conférences, fêtes et événements spéciaux avec la plus haute qualité pour des souvenirs inoubliables.",
+    href: "#packs",
+    cta: "Voir Packs →",
+  },
+  {
+    num: "03",
+    icon: "📣",
+    title: "Marketing & Publicité",
+    body: "Gestion de campagnes publicitaires ciblées sur les réseaux sociaux pour un retour sur investissement maximal.",
+    href: "#packs",
+    cta: "Voir Packs →",
+  },
+  {
+    num: "04",
+    icon: "💼",
+    title: "Solutions B2B",
+    body: "Stratégies marketing sur mesure pour les entreprises et construction de Personal Branding pour les leaders et influenceurs.",
+    href: "#cta",
+    cta: "Contactez-nous →",
+  },
+];
+---
+
+<section id="services">
+  <div class="section-tag">Ce Que Nous Faisons</div>
+  <h2 class="section-title">Nos Services <em>Intégrés</em></h2>
+  <div class="services-grid">
+    {
+      services.map((s) => (
+        <div class="service-card fade-up">
+          <div class="service-num">{s.num}</div>
+          <div class="service-icon" aria-hidden="true">
+            {s.icon}
+          </div>
+          <h3>{s.title}</h3>
+          <p>{s.body}</p>
+          <a href={s.href} class="service-link">
+            {s.cta}
+          </a>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  section {
+    background: var(--dark2);
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+  }
+
+  .service-card {
+    background: var(--dark);
+    padding: 48px 36px;
+    border: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    cursor: default;
+  }
+
+  .service-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(201, 147, 58, 0.06) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+
+  .service-card:hover {
+    transform: translateY(-6px);
+  }
+
+  .service-card:hover::after {
+    opacity: 1;
+  }
+
+  .service-num {
+    font-family: var(--font-bebas);
+    font-size: 4rem;
+    color: rgba(201, 147, 58, 0.1);
+    line-height: 1;
+    margin-bottom: 28px;
+    transition: color 0.4s;
+  }
+
+  .service-card:hover .service-num {
+    color: rgba(201, 147, 58, 0.25);
+  }
+
+  .service-icon {
+    width: 52px;
+    height: 52px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    margin-bottom: 24px;
+    transition: border-color 0.3s, background 0.3s;
+  }
+
+  .service-card:hover .service-icon {
+    border-color: var(--gold);
+    background: rgba(201, 147, 58, 0.1);
+  }
+
+  .service-card h3 {
+    font-family: var(--font-syne);
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 14px;
+    letter-spacing: 0.02em;
+  }
+
+  .service-card p {
+    font-size: 0.82rem;
+    color: rgba(245, 240, 232, 0.45);
+    line-height: 1.7;
+  }
+
+  .service-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 28px;
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-decoration: none;
+    opacity: 0;
+    transform: translateY(4px);
+    transition: opacity 0.3s, transform 0.3s;
+  }
+
+  .service-card:hover .service-link {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 900px) {
+    .services-grid {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+  }
+</style>
