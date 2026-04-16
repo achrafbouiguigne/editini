@@ -1,0 +1,96 @@
+---
+import { Font } from "astro:assets";
+import "../styles/global.css";
+import Cursor from "../components/Cursor.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+}
+
+const {
+  title = "EDITINI — Digital Marketing Agency à Rabat",
+  description = "EDITINI est une agence de marketing digital et de production média basée à Rabat. Montage vidéo, personal branding, publicité ciblée et solutions B2B.",
+  canonical = Astro.url.href,
+} = Astro.props;
+
+const businessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: "EDITINI",
+  description,
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Rabat",
+    addressCountry: "MA",
+  },
+  areaServed: "Maroc",
+  url: canonical,
+};
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#060606" />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content="EDITINI" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <Font cssVariable="--font-bebas" preload />
+    <Font cssVariable="--font-syne" preload />
+    <Font cssVariable="--font-dm-sans" preload />
+
+    <script type="application/ld+json" set:html={JSON.stringify(businessSchema)} is:inline />
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Aller au contenu</a>
+    <Cursor />
+    <Nav />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+
+    <script>
+      const targets = document.querySelectorAll<HTMLElement>(".fade-up");
+
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        targets.forEach((el) => el.classList.add("visible"));
+      } else {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.15 },
+        );
+
+        targets.forEach((el) => observer.observe(el));
+      }
+    </script>
+  </body>
+</html>
