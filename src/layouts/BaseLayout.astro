@@ -14,8 +14,11 @@ interface Props {
 const {
   title = "EDITINI — Digital Marketing Agency à Rabat",
   description = "EDITINI est une agence de marketing digital et de production média basée à Rabat. Montage vidéo, personal branding, publicité ciblée et solutions B2B.",
-  canonical = Astro.url.href,
+  canonical,
 } = Astro.props;
+
+const resolvedCanonical =
+  canonical ?? (Astro.site ? new URL(Astro.url.pathname, Astro.site).href : undefined);
 
 const businessSchema = {
   "@context": "https://schema.org",
@@ -28,7 +31,7 @@ const businessSchema = {
     addressCountry: "MA",
   },
   areaServed: "Maroc",
-  url: canonical,
+  ...(resolvedCanonical ? { url: resolvedCanonical } : {}),
 };
 ---
 
@@ -42,14 +45,14 @@ const businessSchema = {
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="theme-color" content="#060606" />
-    <link rel="canonical" href={canonical} />
+    {resolvedCanonical && <link rel="canonical" href={resolvedCanonical} />}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:locale" content="fr_FR" />
-    <meta property="og:url" content={canonical} />
+    {resolvedCanonical && <meta property="og:url" content={resolvedCanonical} />}
     <meta property="og:site_name" content="EDITINI" />
 
     <meta name="twitter:card" content="summary_large_image" />

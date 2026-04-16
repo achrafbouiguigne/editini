@@ -1,6 +1,8 @@
 import { defineConfig, fontProviders } from "astro/config";
 
 export default defineConfig({
+  // Set this to your production URL before deploying so canonical/OG links resolve correctly.
+  // site: "https://editini.example",
   output: "static",
   compressHTML: true,
   build: {
